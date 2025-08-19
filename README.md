@@ -28,6 +28,9 @@ Our approach integrates AI across the testing lifecycle to improve efficiency, c
 | **Predictive Failure Analysis** | **Custom Heuristic Analysis** | A post-test script analyzes logs and test results, flagging tests that show increasing execution time or flakiness. |
 
 ## 🏗️ Framework Architecture
+
+The project is structured for clarity, scalability, and maintainability, following the Page Object Model (POM) design pattern.
+
 ai-bioauth-test-suite/
 │
 ├── src/test/java/com/bioauth/tests/
