@@ -62,6 +62,7 @@ ai-bioauth-test-suite/
 ├── test-output/                        # Generated TestNG reports and execution logs
 ├── docker-compose.yml                  # Definition to spin up Appium server in Docker
 └── README.md                           # This file
+```
 
 **Tech Stack:** TestNG, Appium, Applitools, Maven, Android Emulator
 
