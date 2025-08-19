@@ -31,18 +31,37 @@ Our approach integrates AI across the testing lifecycle to improve efficiency, c
 
 The project is structured for clarity, scalability, and maintainability, following the Page Object Model (POM) design pattern.
 
+```plaintext
 ai-bioauth-test-suite/
 │
 ├── src/test/java/com/bioauth/tests/
-│ ├── core/ # Core framework classes
-│ ├── pages/ # Page Object Model (POM) Classes
-│ ├── ai/ # AI Integration Classes
-│ └── testsuites/ # Test classes grouped by functionality
+│   ├── core/                           # Core framework infrastructure
+│   │   ├── BaseTest.java               # Initializes Appium Driver, setup/teardown
+│   │   ├── AdbHelper.java              # Utilities for biometric simulation via ADB
+│   │   └── NetworkUtils.java           # Utilities for simulating network conditions
+│   │
+│   ├── pages/                          # Page Object Model (POM) Classes
+│   │   ├── LoginPage.java              # Elements & actions for the login screen
+│   │   ├── WelcomePage.java            # Elements & actions for the post-login screen
+│   │   └── ErrorPage.java              # Elements & actions for error states
+│   │
+│   ├── ai/                             # AI Integration wrappers and utilities
+│   │   ├── VisualTestManager.java      # Handles Applitools Eyes configuration & commands
+│   │   └── TestAnalyzer.java           # Heuristic-based log analysis scripts
+│   │
+│   └── testsuites/                     # Test classes grouped by functionality
+│       ├── BioAuthTests.java           # Tests for biometric scenarios
+│       ├── PasswordFallbackTests.java  # Tests for fallback to password
+│       └── LockoutTests.java           # Tests for account lockout scenarios
 │
-├── src/test/resources/ # Config files, APK, API keys
-├── test-output/ # Generated reports and logs
-├── docker-compose.yml # To spin up Appium server in Docker
-└── README.md
+├── src/test/resources/
+│   ├── config.properties               # Appium Server, App Path, Credentials
+│   ├── test-app-debug.apk              # The Application Under Test (AUT)
+│   └── applitools-api-key.txt          # API Key for Visual AI (gitignored)
+│
+├── test-output/                        # Generated TestNG reports and execution logs
+├── docker-compose.yml                  # Definition to spin up Appium server in Docker
+└── README.md                           # This file
 
 **Tech Stack:** TestNG, Appium, Applitools, Maven, Android Emulator
 
