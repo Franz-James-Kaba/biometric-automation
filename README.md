@@ -135,7 +135,12 @@ ai-bioauth-test-suite/
 
 ## 👥 Contributors
 
-- [Your Name](https://github.com/your-username)
+- Benedicta Asare (https://github.com/Benedicta-Asare)
+- Abdul Rauf Mustapha (https://github.com/arMustapha5)
+- Emily Quarshie (https://github.com/ladyemilyy)
+- Etornam Koko (https://github.com/K0K0-cod3s)
+- Franz-James Wefagi Kaba (https://github.com/Franz-James-Kaba)
+
 
 ## 📄 License
 
@@ -143,4 +148,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ by the AI-QA Team.**
+**Built with ❤️ by the FREE B Team.**
