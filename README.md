@@ -77,19 +77,19 @@ ai-bioauth-test-suite/
 
 **Objective:** To ensure the BioAuth login system is functional, secure, and user-friendly under all expected and edge-case conditions.
 
-| Category | Scenario ID | Scenario Description | Automated |
-| :--- | :--- | :--- | :--- |
-| **Bio Success** | `BIO-001` | Successful login via Fingerprint | ✅ |
-| | `BIO-002` | Successful login via Face ID | ✅ |
-| **Bio Failure** | `BIO-003` | Failed login via unrecognized fingerprint | ✅ |
-| | `BIO-004` | Failed login via unrecognized face | ✅ |
-| **Fallback** | `FALL-001` | Fallback to password after bio failure | ✅ |
-| | `FALL-002` | Choose password login directly | ✅ |
-| **Lockout** | `LOCK-001` | Account lockout after 3 failed bio attempts | ✅ |
-| | `LOCK-002` | Lockout message is displayed correctly | ✅ |
-| **Permissions** | `PERM-001` | Login flow if biometric permission is denied | ✅ |
-| **Network** | `NET-001` | Network drop during bio auth challenge | ✅ |
-| | `NET-002` | Slow network during auth | ✅ |
+| Category | Scenario ID | Scenario Description | AI Feature | Status |
+|:---|:---|:---|:---|:---|
+| **Bio Success** | `BIO-001` | Successful login via Fingerprint | Visual Validation | ✅ |
+| | `BIO-002` | Successful login via Face ID | Visual Validation | ✅ |
+| **Bio Failure** | `BIO-003` | Failed login via unrecognized fingerprint | Visual Validation | ✅ |
+| | `BIO-004` | Failed login via unrecognized face | Visual Validation | ✅ |
+| **Fallback** | `FALL-001` | Fallback to password after bio failure | AI-Generated Case | ✅ |
+| | `FALL-002` | Choose password login directly | AI-Generated Case | ✅ |
+| **Lockout** | `LOCK-001` | Account lockout after 3 failed bio attempts | AI-Assisted Script | ✅ |
+| | `LOCK-002` | Lockout message is displayed correctly | Visual Validation | ✅ |
+| **Permissions** | `PERM-001` | Login flow if biometric permission is denied | ADB Commands | ✅ |
+| **Network** | `NET-001` | Network drop during bio auth challenge | Network Simulation | ✅ |
+| | `NET-002` | Slow network during authentication | Network Simulation | ✅ |
 
 ## 🚀 Getting Started
 
