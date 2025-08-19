@@ -82,7 +82,7 @@ ai-bioauth-test-suite/
 
 1.  Clone the repo:
     ```bash
-    git clone https://github.com/your-username/ai-bioauth-test-suite.git
+    git clone https://github.com/Franz-James-Kaba/biometric-automation.git
     cd ai-bioauth-test-suite
     ```
 
