@@ -1,15 +1,13 @@
 AI-Enhanced Test Automation Suite for BioAuth Login System
+
 📖 Overview
 This project implements a sophisticated AI-enhanced test automation suite for a simulated mobile login application that supports both traditional username/password and biometric authentication (Fingerprint & Face ID). The suite is designed to rigorously test the application's functionality, reliability, and user experience under various conditions, leveraging AI to elevate the testing strategy beyond traditional methods.
 
 The System Under Test (SUT) is a demo Android application (app-debug.apk) featuring:
 
 Username/Password Login
-
 Simulated Fingerprint Authentication
-
 Simulated Face ID Authentication (via the same Android biometric prompt)
-
 A backend that simulates authentication logic via REST endpoints.
 
 🧠 AI Integration & Strategy
@@ -20,6 +18,7 @@ Test Case Generation	ChatGPT (OpenAI API)	Used a structured prompt to generate a
 Test Script Writing	ChatGPT & GitHub Copilot	Accelerated the creation of boilerplate code (Page Object Models, helper functions) and complex Appium interactions by describing the intent in natural language.
 Visual Anomaly Detection	Applitools Eyes	Integrated into the Appium framework. Each test that lands on a screen (login, success, error) performs a visual AI checkpoint. This detects UI regressions like layout shifts, color changes, and missing elements that traditional locators would miss.
 Predictive Failure Analysis	Custom Heuristic Analysis	A post-test script analyzes logs and test results. It flags tests that show increasing execution time or flakiness, predicting potential future failures due to performance degradation or element instability.
+
 🏗️ Framework Architecture
 text
 ai-bioauth-test-suite/
@@ -52,20 +51,14 @@ ai-bioauth-test-suite/
 ├── test-output/                   # Generated reports and logs
 ├── docker-compose.yml             # To spin up Appium server in Docker
 └── README.md
+
 Technology Stack:
-
 Test Runner: TestNG
-
 Mobile Automation: Appium (UiAutomator2)
-
 Visual AI: Applitools Eyes SDK
-
 AI Assistants: ChatGPT, GitHub Copilot
-
 Build Tool: Maven
-
 Device: Android Emulator (Google APIs)
-
 CI/CD Ready: Designed for integration with Jenkins/GitHub Actions
 
 ✅ Test Strategy & Coverage Matrix
