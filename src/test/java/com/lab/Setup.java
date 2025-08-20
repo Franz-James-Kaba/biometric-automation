@@ -3,10 +3,9 @@ package com.lab;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -20,13 +19,10 @@ import static TestData.ConfigData.APK_PATH;
 public class Setup {
 
     protected AndroidDriver mobileDriver;
-    protected WebDriver webDriver;
+
     protected WebDriverWait mobileWait;
-    protected WebDriverWait webWait;
 
     AppiumDriverLocalService service;
-
-    // Page object
 
     @BeforeClass
     public void startAppiumServer() {
@@ -35,26 +31,36 @@ public class Setup {
     }
 
     @BeforeMethod
-    public void setUpEnvironment() throws MalformedURLException {
-        // Initialize Mobile Driver
+    public void setUpEnvironment() throws MalformedURLException, URISyntaxException {
+        // Initialize Mobile Driver with capabilities for fingerprint testing
         UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("Reach Emu");
+        options.setDeviceName("Reach_Emu"); // Use the AVD ID, not display name
+        options.setPlatformVersion("9.0"); // Explicitly set from your emulator config
         options.setApp(APK_PATH);
+        options.setAppPackage("ai.fingerprint.lock.app.lock");
+        options.setAppActivity("com.example.newdemoactivity.ui.overlay.activity.SettingOverLay");
+        options.setAvd("Reach_Emu"); // Launch the specific emulator
+        options.setAvdLaunchTimeout(Duration.ofSeconds(120)); // Longer timeout for emulator boot
+        options.setAvdReadyTimeout(Duration.ofSeconds(120));
+        options.setAutoGrantPermissions(true); // Automatically grant app permissions
+        options.setIsHeadless(false); // Set to true if you don't need to see the UI
 
-        try {
-            URI uri = new URI("http://192.168.16.1:4723/");
-            mobileDriver = new AndroidDriver(uri.toURL(), options);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("Invalid URI syntax for Appium server URL", e);
-        }
+        // Use the local service URL instead of hardcoded IP
+        mobileDriver = new AndroidDriver(service.getUrl(), options);
 
         mobileDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         mobileWait = new WebDriverWait(mobileDriver, Duration.ofSeconds(10));
-
-
     }
 
-    @AfterTest
+    @AfterMethod
+    public void cleanUpTest() {
+        // Reset app state after each test if needed
+        if (mobileDriver != null) {
+            mobileDriver.terminateApp("ai.fingerprint.lock.app.lock");
+        }
+    }
+
+    @AfterClass
     public void tearDown() {
         if (mobileDriver != null) {
             mobileDriver.quit();
@@ -64,9 +70,8 @@ public class Setup {
             webDriver.quit();
         }
 
-        if (service != null) {
+        if (service != null && service.isRunning()) {
             service.stop();
         }
     }
 }
-
